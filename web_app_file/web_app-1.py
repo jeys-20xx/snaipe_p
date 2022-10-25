@@ -115,6 +115,7 @@ if submit_button :
             t_list = t_list00
             t_second_list = t_second_list00
             win_par = win_par00
+            quantity_num = 30 #大路チャート リスト個数
             
             df_01 = pair_01
             df_01["time"] =  pd.to_datetime(df_01["time"]) #datetime型に変換
@@ -234,7 +235,7 @@ if submit_button :
                     dairo_list= [] #勝ち負けをすべて格納する
 
 
-                    dairo_list_1 = [[]*i for i in range(20)]  #内包表記で大量のリストを作成
+                    dairo_list_1 = [[]*i for i in range(quantity_num)]  #内包表記で大量のリストを作成
                     list_num = 0
 
                     for i , y in zip(data_i["group"],data_y["group"]):
@@ -262,14 +263,14 @@ if submit_button :
                                 dairo_list_1[list_num] += "〇"
 
                             elif i == "0":
-                                dairo_list_1[list_num] += "△"   
+                                dairo_list_1[list_num] += "△"
 
 
 
                         return dairo_list
 
                     #作った関数で 任意の回数 行い 連続した動きを取り出す
-                    for i in range(20):
+                    for i in range(quantity_num):
                         dairo_chart(i)
 
                     #同じリストが重複したら それ以降は 消す
