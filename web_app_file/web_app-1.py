@@ -262,7 +262,7 @@ if submit_button :
                                 dairo_list_1[list_num] += "〇"
 
                             elif i == "0":
-                                dairo_list_1[list_num] += "×"   
+                                dairo_list_1[list_num] += "△"   
 
 
 
