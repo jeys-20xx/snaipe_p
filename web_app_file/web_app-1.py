@@ -7,7 +7,7 @@ import altair as alt
 
 
 def read_file(file):
-    result_file = pd.read_csv(f"df_{file}_30s_30sec.csv") #web_app_file/
+    result_file = pd.read_csv(f"web_app_file/df_{file}_30s_30sec.csv") #web_app_file/
     return result_file
 
 
