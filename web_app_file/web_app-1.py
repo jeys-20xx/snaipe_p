@@ -7,7 +7,7 @@ import altair as alt
 
 
 def read_file(file):
-    result_file = pd.read_csv(f"web_app_file/df_{file}_30s_30sec.csv")
+    result_file = pd.read_csv(f"df_{file}_30s_30sec.csv") #web_app_file/
     return result_file
 
 
@@ -51,6 +51,7 @@ pair_00 = st.sidebar.multiselect("通貨ペアを選択してください。",li
 
 
 time_sortbox = [] #表示結果の時間をまとめて入れる
+result_box = [] #成績が入る
 t_hour00 = st.sidebar.select_slider("日本時間(UTC+9)",
                             options=[0,1,2,3,4,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23],value=9
                             )
@@ -283,6 +284,16 @@ if submit_button :
                     
                     if insen_minus*100 >= win_par:
                         " *** " 
+                        #直近の勝敗を記録
+                        y_result = list(data_y["group"])[-1]
+                        i_result = list(data_i["group"])[-1]
+                        
+                        if i_result == True:
+                            result_box.append("1")
+                        else:
+                            result_box.append("0")
+                            
+                        
                         time_sortbox.append(f"{i_01}【Short】-- {t_hour}:{t_min}:{t_sec}")
                         st.write(f"{i_01}")
                         st.write(f"UTG+9 :{t_hour}時{t_min}分{t_sec}秒:【 Short 】")
@@ -325,6 +336,15 @@ if submit_button :
                         
                     if yousen_minus*100 >= win_par:
                         " *** "
+                        #直近の勝敗を記録                        
+                        y_result = list(data_y["group"])[-1]
+                        i_result = list(data_i["group"])[-1]
+                        
+                        if y_result == True:
+                            result_box.append("1")
+                        else:
+                            result_box.append("0")
+                        
                         time_sortbox.append(f"{i_01}【Long】-- {t_hour}:{t_min}:{t_sec}")
                         st.write(f"{i_01}")
                         st.write(f"UTG+9 :{t_hour}時{t_min}分{t_sec}秒:【 Long 】")
@@ -370,6 +390,10 @@ if submit_button :
         """
         for i in time_sortbox:
             st.write(i)
+        
+        result_win = result_box.count("1")
+        result_lose = result_box.count("0")
+        st.write(f"{result_win}勝{result_lose}敗")
 
                                 
 
