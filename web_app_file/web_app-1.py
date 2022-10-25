@@ -58,7 +58,7 @@ t_hour00 = st.sidebar.select_slider("日本時間(UTC+9)",
 t_list00 = range(0,60,1) # m刻み
 t_second_list00 = range(0,60,30) #30秒刻み
 
-win_par00 = st.sidebar.slider("陽線＆陰線の確率[%]",60,99,69,3)
+win_par00 = st.sidebar.slider("陽線＆陰線の確率[%]",60,99,69,2)
 
 radio_bottun = st.sidebar.radio("対象の期間を選択",
                  ("full year (推奨)","Summer","Winter"))
