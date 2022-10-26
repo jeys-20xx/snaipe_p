@@ -49,7 +49,7 @@ pair_00 = st.sidebar.multiselect("通貨ペアを選択してください。",li
 
 time_sortbox = [] #表示結果の時間をまとめて入れる
 result_box = [] #成績が入る
-
+st.sidebar.write("---")
 t_hour00 = st.sidebar.select_slider("■ 時間選択1 （日本時間:UTC+9）",  
                             options=[0,1,2,3,4,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23],
                             value=9)
@@ -77,7 +77,7 @@ if time_select2 == True:
                                 options=[0,1,2,3,4,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23],
                                 value=11)
         f"■ 時間選択③: {t_hour00_2}時"
-        
+            
         if t_hour00 == [t_hour00_2]:
             st.error("同じ時間が選択されています。")
         elif t_hour00_1 == t_hour00_2:
@@ -91,13 +91,14 @@ if time_select2 == True:
 
 t_list00 = range(0,60,1) # m刻み
 t_second_list00 = range(0,60,30) #30秒刻み  
-
+st.sidebar.write("---")
 win_par00 = st.sidebar.slider("検索する期待値を指定[%]",60,99,68,2)
 if not win_par00 :
     t_list00
 else:
     st.write(f"■検索する期待値: {win_par00}％")
-
+    
+st.sidebar.write("---")
 radio_bottun = st.sidebar.radio("対象の期間を選択",
                  ("full year (推奨)","Summer","Winter"))
 
