@@ -63,7 +63,7 @@ else:
 t_hour00 = [t_hour00]
 time_select2 = st.sidebar.checkbox("時間選択2")
 if time_select2 == True:
-    t_hour00_1 = st.sidebar.select_slider("■ 時間選択1 （日本時間:UTC+9）",  
+    t_hour00_1 = st.sidebar.select_slider("■ 時間選択2 （日本時間:UTC+9）",  
                             options=[0,1,2,3,4,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23],
                             value=10)
     f"■ 時間選択②: {t_hour00_1}時"
@@ -73,7 +73,7 @@ if time_select2 == True:
 
     time_select3 = st.sidebar.checkbox("時間選択3")
     if time_select3 == True:
-        t_hour00_2 = st.sidebar.select_slider("■ 時間選択1 （日本時間:UTC+9）",  
+        t_hour00_2 = st.sidebar.select_slider("■ 時間選択3 （日本時間:UTC+9）",  
                                 options=[0,1,2,3,4,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23],
                                 value=11)
         f"■ 時間選択③: {t_hour00_2}時"
@@ -100,7 +100,7 @@ else:
     
 st.sidebar.write("---")
 radio_bottun = st.sidebar.radio("対象の期間を選択",
-                 ("full year (推奨)","Summer","Winter"))
+                 ("Summer","Winter","full year (basis summer)"))
 
 submit_button = st.sidebar.button("Enter")
 
