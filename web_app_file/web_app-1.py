@@ -53,7 +53,7 @@ if portfolio:
     
     st.sidebar.write("追加する時間を入力してください")
     t_select01 = st.sidebar.number_input("",value=13)
-    t_select02 = st.sidebar.number_input("",value=45)
+    t_select02 = st.sidebar.number_input("",value=5)
     t_select03 = st.sidebar.number_input("※00秒 or 30秒",0,30,step=30)
     st.sidebar.write(f"""## 選択時間：{t_select01}時{t_select02}分{t_select03}秒""")
     time_pair_select = [t_select01,t_select02,t_select03]
