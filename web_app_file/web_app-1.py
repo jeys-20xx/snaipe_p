@@ -1,6 +1,3 @@
-from distutils.log import error
-from lib2to3.pytree import type_repr
-from turtle import clear
 import streamlit as st 
 import numpy as np 
 import pandas as pd 
