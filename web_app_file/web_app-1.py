@@ -7,7 +7,7 @@ import altair as alt
 
 
 def read_file(file):
-    result_file = pd.read_csv(f"web_app_file/df_{file}_30s_30sec.csv") #web_app_file/
+    result_file = pd.read_csv(f"df_{file}_30s_30sec.csv") #web_app_file/
     return result_file
 
 
@@ -30,7 +30,7 @@ st.caption("バイナリーオプション３０秒取引専用ツール")
 #変数の定義
 
 start = "2022-03-15"
-end = "2022-10-31"
+#end = "2022-10-31"
 
 st.sidebar.write(f"""
     ### アルゴリズム可視化アプリ
@@ -53,7 +53,7 @@ if portfolio:
     
     st.sidebar.write("追加する時間を入力してください")
     t_select01 = st.sidebar.number_input("",value=13)
-    t_select02 = st.sidebar.number_input("",value=5)
+    t_select02 = st.sidebar.number_input("",value=45)
     t_select03 = st.sidebar.number_input("※00秒 or 30秒",0,30,step=30)
     st.sidebar.write(f"""## 選択時間：{t_select01}時{t_select02}分{t_select03}秒""")
     time_pair_select = [t_select01,t_select02,t_select03]
@@ -123,7 +123,14 @@ if portfolio:
             df_01 = df_01.set_index("time")#DATE カラムを インデックスにする
             df_01 = df_01.astype(float) #文字列からfloat型に変換
             df_01["week"] = df_01.index.strftime("%a") #曜日を追加
-            df_01 = df_01[start:end] #期間の抽出
+            df_01 = df_01[start:] #期間の抽出
+            
+            #冬時間を切り離して +1時間して戻す
+            df_01_winter = df_01["2022-11-7":]#2022冬時間が始まった日
+            df_01_summer = df_01[:"2022-11-6"]#2022 夏時間の最終日
+            df_01_winter.index = df_01_winter.index + datetime.timedelta(hours=1) #datetimeに+1時間
+            df_01 = pd.concat([df_01_summer,df_01_winter])
+
 
             time_list = []  #時間を入れる
 
@@ -467,7 +474,7 @@ else:
         
     st.sidebar.write("---")
     radio_bottun = st.sidebar.radio("対象の期間を選択",
-                    ("Summer","Winter","full year (basis summer)"))
+                    ("full year (basis summer)","Summer","Winter"))
 
     submit_button = st.sidebar.button("Enter")
 
@@ -533,7 +540,13 @@ try:
                 df_01 = df_01.set_index("time")#DATE カラムを インデックスにする
                 df_01 = df_01.astype(float) #文字列からfloat型に変換
                 df_01["week"] = df_01.index.strftime("%a") #曜日を追加
-                df_01 = df_01[start:end] #期間の抽出
+                df_01 = df_01[start:] #期間の抽出
+                
+                 #冬時間を切り離して +1時間して戻す
+                df_01_winter = df_01["2022-11-7":]#2022冬時間が始まった日
+                df_01_summer = df_01[:"2022-11-6"]#2022 夏時間の最終日
+                df_01_winter.index = df_01_winter.index + datetime.timedelta(hours=1) #datetimeに+1時間
+                df_01 = pd.concat([df_01_summer,df_01_winter])
 
                 time_list = []  #時間を入れる
 
