@@ -425,7 +425,7 @@ else:
     result_box = [] #成績が入る
     st.sidebar.write("---")
     t_hour00 = st.sidebar.select_slider("■ 時間選択1 （日本時間:UTC+9）",  
-                                options=[0,1,2,3,4,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23],
+                                options=[0,1,2,3,4,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23],
                                 value=9)
 
     if not t_hour00:
@@ -438,7 +438,7 @@ else:
     time_select2 = st.sidebar.checkbox("時間選択2")
     if time_select2 == True:
         t_hour00_1 = st.sidebar.select_slider("■ 時間選択2 （日本時間:UTC+9）",  
-                                options=[0,1,2,3,4,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23],
+                                options=[0,1,2,3,4,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23],
                                 value=10)
         f"■ 時間選択②: {t_hour00_1}時"
         if t_hour00 == [t_hour00_1]:
@@ -448,7 +448,7 @@ else:
         time_select3 = st.sidebar.checkbox("時間選択3")
         if time_select3 == True:
             t_hour00_2 = st.sidebar.select_slider("■ 時間選択3 （日本時間:UTC+9）",  
-                                    options=[0,1,2,3,4,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23],
+                                    options=[0,1,2,3,4,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23],
                                     value=11)
             f"■ 時間選択③: {t_hour00_2}時"
                 
